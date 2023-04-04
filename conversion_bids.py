@@ -1,14 +1,16 @@
 import os # For path manipulation
 #import shutil # File manipulation
-from mne_bids import print_dir_tree # To show the input/output directories structures inside this example
 from sovabids.rules import apply_rules # Apply rules for conversion
 from sovabids.convert import convert_them # Do the conversion
 #from sovabids.datasets import lemon_prepare # Download the dataset
 from sovabids.settings import REPO_PATH
 
-sourcePath=r'E:\PROYECTO_EEG_LAPSIM\FORMATO_EDF\estudiantes_bio'
-bidsPath=r'D:\XIMENA\BIDS\Estudiantes'
-rulePath=r'D:\XIMENA\eeg_harmonization\misc\reglasQuantum.yml'
+current = os.getcwd()
+sourcePath= os.path.join(current,'database')
+bidsPath = os.path.join(current,'database_bids')
+os.makedirs(bidsPath,exist_ok=True)
+rulePath= os.path.join(current,'reglasBiomarcadores.yml')
+
 source_path = os.path.abspath(sourcePath) # For the input data we will convert
 bids_path= os.path.abspath(bidsPath) # The output directory that will have the converted data
 rules_path = os.path.abspath(rulePath) # The rules file that setups the rule for conversion
